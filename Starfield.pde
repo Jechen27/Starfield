@@ -1,26 +1,49 @@
-//your code here
+NormalParticle [] A;
 void setup()
 {
-	//your code here
+  size (300,300);
+  A = new NormalParticle[50];
+  for (int i = 1; i<A.length; i++)
+  A[i] = new NormalParticle();
 }
 void draw()
 {
-	//your code here
+  for (int i = 1; i<A.length; i++)
+  A[i].move();
+  A[i].show();
 }
 class NormalParticle
 {
-	//your code here
+  double px,py,pa,ps;
+  int pc;
+	NormalParticle()
+  {
+    px = 150;
+    py = 150;
+    pc = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    pa = Math.random()*2*PI;
+    ps = 8;
+  }
+  void move()
+  {
+    px = cos((float)pa)*ps+px;
+    py = sin((float)pa)*ps+py;
+  }
+  void show()
+  {
+   fill(pc);
+   ellipse((float)px,(float)py,10,10);
+  }
 }
-interface Particle
-{
-	//your code here
-}
-class OddballParticle //uses an interface
-{
-	//your code here
-}
-class JumboParticle //uses inheritance
-{
-	//your code here
-}
-
+//interface Particle
+//{
+	
+//}
+//class OddballParticle //uses an interface
+//{
+	
+//}
+//class JumboParticle //uses inheritance
+//{
+	
+//}
