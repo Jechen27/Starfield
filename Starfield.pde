@@ -5,13 +5,14 @@ void setup()
   for (int i = 1; i<A.length; i++)
   {
   A[i] = new NormalParticle();
-  A[i] = new OddballParticle();
   }
+  A[0] = new OddballParticle();
+  A[1] = new JumboParticle();
 }
 void draw()
 {
   background(0);
-  for (int i = 1; i<A.length; i++)
+  for (int i = 0; i<A.length; i++)
   {
   A[i].move();
   A[i].show();
@@ -27,7 +28,7 @@ class NormalParticle implements Particle
     ny = 150;
     nc = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
     na = Math.random()*2*PI;
-    ns = 2;
+    ns = Math.random()*5+1;
   }
   public void move()
   {
@@ -51,22 +52,30 @@ class OddballParticle implements Particle
   int oc;
   OddballParticle()
   {
+    oa = Math.random()*2*PI;
     ox = cos((float)oa)*25+150;
     oy = sin((float)oa)*25+150;
     oc = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-    oa = Math.random()*2*PI;
     os = 2;
   }
 	public void move()
   {
-    
+    float i=0.01;
+    ox = cos(2*PI*i)*os+ox;
+    oy = sin(2*PI*i)*os+oy;
+    i=i+0.5;
   }
   public void show()
   {
-    
+    fill(oc);
+    rect((float)ox,(float)oy,20,20);
   }
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends NormalParticle
 {
-	
+	public void show()
+  {
+   fill(nc);
+   ellipse((float)nx,(float)ny,20,20);
+  }
 }
