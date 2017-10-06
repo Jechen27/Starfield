@@ -28,18 +28,23 @@ class NormalParticle implements Particle
     ny = 150;
     nc = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
     na = Math.random()*2*PI;
-    ns = Math.random()*5+1;
+    ns = Math.random()*5+3;
   }
   public void move()
   {
     na = na - 0.03;
     nx = cos((float)na)*ns+nx;
     ny = sin((float)na)*ns+ny;
-    nx = nx+1;
+    nx = nx + 5;
+    ny = ny + 3;
     if (nx > 300)
     nx = 0;
     if (ny > 300)
     ny = 0;
+    if (nx < 0)
+    nx = 300;
+    if (ny < 0)
+    ny = 300;
   }
   public void show()
   {
