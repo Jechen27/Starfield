@@ -35,7 +35,8 @@ class NormalParticle implements Particle
     na = na - 0.03;
     nx = cos((float)na)*ns+nx;
     ny = sin((float)na)*ns+ny;
-    nx = nx+1;
+    nx = nx+2;
+    ny = ny+4;
     if (nx > 300)
     nx = 0;
     if (ny > 300)
